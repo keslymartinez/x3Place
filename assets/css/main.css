@@ -1,0 +1,24 @@
+
+h5 {
+    text-transform: uppercase;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+     font-family: 'Merienda One', cursive;
+ }
+ h1{
+    font-weight: 900;
+    letter-spacing: -5px;
+    font-size: 6em;
+
+}
+#loginPlace {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#alert h6{
+    padding: 2em;
+}
