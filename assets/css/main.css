@@ -22,3 +22,14 @@ h1,h2,h3,h4,h5,h6 {
 #alert h6{
     padding: 2em;
 }
+
+strong, img {
+	display: block;
+}
+img {
+	margin: 0 auto;
+	border-radius: 10px;
+}
+#logout {
+	margin-top: 10px;
+}

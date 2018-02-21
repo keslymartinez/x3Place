@@ -8,7 +8,7 @@
     <!-- Compiled and minified CSS -->
   <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     
 </head>
@@ -23,20 +23,39 @@
     </div>
     </div>
 </nav>
-<div class="section white" id="loginPlace">
+ 
+  <!-- Modal Structure -->
+  <div class="container">
+  <div class="row">
+    <div class="col s6 offset-s3">
+  <div id="modal1" class="modal">
+    <div class="modal-content">
   <div class="container center">
-    <div class="row">
-      <div class="col s12">
-      <a class="waves-effect waves-light indigo darken-4 btn-large"><i class="fab fa-facebook-square" onclick="login()" aria-hidden="true"></i> Inicia seccion con Facebook</a>
+  <a href="#" id="login" class="btn btn-primary">Iniciar secion con Facebook</a>
        <div id="status"></div>
-        
+      </div>
       </div>
      <div class="col s6 offset-s3 ">
         <p class="light">Solo puedes ingresar a esta app mediante su usuario de facebook. Al iniciar estas aceptando nuestros <a href="">Terminos</a> y <a href="">Condiciones</a></p>
      </div>
     </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
   </div>
 </div>
+</div>
+
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <section class="section center-aling " id="askBox">
 
     <div class="container center white-text" id="init">
@@ -51,10 +70,14 @@
 
     </section>
       <footer class="center  light">&copy <a href="#" class="white-text" target="_blank">app 2018</a></footer>
+
+  
+   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+ 
     <script src="assets/js/main.js"></script>
 </body>
 
