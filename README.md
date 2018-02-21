@@ -1,6 +1,6 @@
 
 # ** NEAR ME **
-- **PROYECTO EN FIREBASE** - ![NEAR ME](https://findme-visidevi.firebaseapp.com)
+- **PROYECTO EN FIREBASE** - (https://findme-visidevi.firebaseapp.com)
 
 ##  **OBJETIVO**
 MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS

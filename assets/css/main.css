@@ -1,15 +1,16 @@
+#map {
+        width:100%;
+        height: 100vh;
+        
+ }
 body{
    font-family: 'Lato', sans-serif !important;
 }
-h5 {
-    text-transform: uppercase;
-}
-
 
 h1,h2,h3,h4,h5,h6 {
     font-family: 'Permanent Marker', cursive;
 }
- h1{
+h1{
     font-weight: 900;
     letter-spacing: -5px;
     font-size: 6em;
@@ -22,11 +23,9 @@ h6{
   bottom: 0;
   width: 100%;
 }
-
 #alert h6{
     padding: 2em;
 }
-
 strong, img {
 	display: block;
 }
@@ -38,22 +37,18 @@ img {
 	margin-top: 10px;
 	background-color: blue;
 }
-#map {
-  height: 60vh;
-  width:100%;
- }
  #dayAll{
   margin-left: 10%;
+}
 
- }
 canvas{
   padding:  2em;
 }
+
  #tamaño{
   max-height: 5em;
   min-width: 1em;
  }
-
 
   .controls {
         border: 1px solid transparent;
@@ -99,10 +94,10 @@ canvas{
 .dgcAlert .dgcVentana .dgcMensaje { margin: 0 auto; padding-top: 45px; text-align: center; width: 400px;font-size: 20px;}
 .dgcAlert .dgcVentana .dgcAceptar{background:#09C; bottom:20px; display: inline-block; font-size: 12px; font-weight: bold; height: 24px; line-height: 24px; padding-left: 5px; padding-right: 5px;text-align: center; text-transform: uppercase; width: 75px;cursor: pointer; color:#FFF; margin-top:50px;}
 
-
 span{
   font-weight: 300;
 }
+
 #initApp{
   height: 79vh;
   width: 100%;

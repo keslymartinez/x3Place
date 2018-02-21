@@ -22,22 +22,16 @@ function getLocation() {
     alert("Geolocation is not supported by this browser.");
   }
 };
-
-
 function initMap(position){
-  console.log(position)
-
+  //console.log(position)
     var center = new google.maps.LatLng(position.coords.latitude,
         position.coords.longitude)
     localStorage.setItem('lat',position.coords.latitude)
     localStorage.setItem('long',position.coords.longitude)
-
     map = new google.maps.Map(document.getElementById('map'),{
      center: center,
      zoom:12 
     }); 
-     
-
   // var logo = 'http://maps.google.com/mapfiles/kml/paddle/grn-stars.png'; cambia imgen
   var marker = new google.maps.Marker({
     position: center,
@@ -46,22 +40,15 @@ function initMap(position){
     animation: google.maps.Animation.BOUNCE,
     map: map
   });
-
-
-
   var request = {
  location: center,
  radius: 8000,
  types: ['park']
-  };
-      
+  };    
   var service = new google.maps.places.PlacesService(map);
   service.nearbySearch(request, callback); 
-
   new AutocompleteDirectionsHandler(map);
-
 }
-
 function callback(results, status) {
   if(status == google.maps.places.PlacesServiceStatus.OK){
       for (var i = 0; i < results.length; i++) {
@@ -70,10 +57,7 @@ function callback(results, status) {
       }
   }
 }
-
 function createMarker(place) {
-   var placeLoc = place.geometry.location;
-
    //modificamos la imagen del marcador
    var image = {
       url: './assets/img/tree8.png',
@@ -82,17 +66,13 @@ function createMarker(place) {
       anchor: new google.maps.Point(17, 34),
       scaledSize: new google.maps.Size(25, 25)
     };
-
       var marker = new google.maps.Marker({
           map: map,
           icon: image,
           title: place.name,
-          animation: google.maps.Animation.DROP, //google.maps.Animation.BOUNCE,
-          // customInfo:{'href':`#modal1` }, agregar atritubutos al markador
+          animation: google.maps.Animation.DROP, 
           position: place.geometry.location
       });
-      
-
 // Cambia la animacion del marcador 
 // marker.addListener('click', toggleBounce);
 // function toggleBounce() {
@@ -102,19 +82,15 @@ function createMarker(place) {
 //         marker.setAnimation(google.maps.Animation.BOUNCE);
 //       }
 //     }
-    
-      var infowindow = new google.maps.InfoWindow();
+  // var infowindow = new google.maps.InfoWindow();
     alert(`Encontramos ${totalPLaces} parques cercanos a  ti!`); 
       //console.log(marker)
       google.maps.event.addListener(marker, 'click', function() {
        localStorage.setItem('latitude', place.geometry.viewport.f.b);
-       localStorage.setItem('longD', place.geometry.viewport.b.b);
-     
+       localStorage.setItem('longD', place.geometry.viewport.b.b); 
       })
-      console.log(place);
     google.maps.event.addListener(marker, 'click', function() {
-      //$(`#modal1`).modal('open');
-       console.log(place);
+       //console.log(place);
        let status;
        if(place.hasOwnProperty('opening_hours') === true){
         if(place.opening_hours.open_now === true){
@@ -222,7 +198,7 @@ function AutocompleteDirectionsHandler(map) {
 function alertDGC(mensaje){
   var dgcTiempo=500
   var ventanaCS=`<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">${mensaje}<br><br>
-  <a class="dgcAceptar waves-effect waves-light btn white-text yellow darken-4">Selecionar como destion</a></div></div></div>`;
+  <a class="dgcAceptar waves-effect waves-light btn white-text yellow darken-4">Gracias</a></div></div></div>`;
   $('body').append(ventanaCS);
   var alVentana=$('.dgcVentana').height();
   var alNav=$(window).height();
