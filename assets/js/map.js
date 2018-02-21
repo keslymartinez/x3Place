@@ -181,6 +181,7 @@ function createMarker(place) {
         
         // }﻿
 
+
 function AutocompleteDirectionsHandler(map) {
         this.map = map;
         this.originPlaceId = null;
@@ -261,7 +262,7 @@ function AutocompleteDirectionsHandler(map) {
 
 
 
-        
+
 
 
 function alertDGC(mensaje){
