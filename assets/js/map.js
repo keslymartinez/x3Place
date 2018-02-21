@@ -1,7 +1,5 @@
-google.maps.event.addDomListener(window, 'load', initMap);
+
  let totalPLaces='';
-
-
 $( document ).ready(function() {
      $('.modal').modal();
 
@@ -12,12 +10,14 @@ $( document ).ready(function() {
         $('.trigger-modal').modal();
 
      getLocation()
+
 });
 (function ($) {
     $(function (){
 
         //initialize all modals           
         $('.modal').modal();
+        showPosition()
 
         // //now you can open modal from code
         // $('#modal1').modal('open');
@@ -34,26 +34,36 @@ function getLocation() {
     alert("Geolocation is not supported by this browser.");
   }
 };
+
+
 function initMap(position){
+  console.log(position)
+
     var center = new google.maps.LatLng(position.coords.latitude,
         position.coords.longitude)
+    localStorage.setItem('lat',position.coords.latitude)
+    localStorage.setItem('long',position.coords.longitude)
+
     map = new google.maps.Map(document.getElementById('map'),{
      center: center,
-     zoom:15 
+     zoom:12 
     }); 
-
+     
 
   // var logo = 'http://maps.google.com/mapfiles/kml/paddle/grn-stars.png'; cambia imgen
   var marker = new google.maps.Marker({
     position: center,
     icon: center.icon,
     draggable: true,
+    animation: google.maps.Animation.BOUNCE,
     map: map
   });
 
+
+
   var request = {
  location: center,
- radius: 1000,
+ radius: 8000,
  types: ['park']
   };
       
@@ -78,7 +88,7 @@ function createMarker(place) {
 
    //modificamos la imagen del marcador
    var image = {
-      url: place.icon,
+      url: './assets/img/tree8.png',
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
@@ -94,6 +104,7 @@ function createMarker(place) {
           position: place.geometry.location
       });
       
+
 // Cambia la animacion del marcador 
 // marker.addListener('click', toggleBounce);
 // function toggleBounce() {
@@ -105,22 +116,39 @@ function createMarker(place) {
 //     }
     
       var infowindow = new google.maps.InfoWindow();
-    //  alert(`Encontramos ${totalPLaces} parques cercanos a  ti!`);  ACTIVAR AL FINALIZAR EL PROYECTO
+    alert(`Encontramos ${totalPLaces} parques cercanos a  ti!`); 
       //console.log(marker)
+      google.maps.event.addListener(marker, 'click', function() {
+       localStorage.setItem('latitude', place.geometry.viewport.f.b);
+       localStorage.setItem('longD', place.geometry.viewport.b.b);
      
+      })
+      console.log(place);
     google.maps.event.addListener(marker, 'click', function() {
       //$(`#modal1`).modal('open');
        console.log(place);
        let status;
-       if(place.opening_hours.open_now === true){
+       if(place.hasOwnProperty('opening_hours') === true){
+        if(place.opening_hours.open_now === true){
         status = 'Abierto'
-       } else {
-        status = 'Cerrado'
-       }
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+        alert('<div><strong>' + place.name + '</strong><br>' +
           'Dirección: ' + place.vicinity + '<br>' +
-          'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>');
-    infowindow.open(map, this);
+          'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>')
+          }else {
+          status = 'Cerrado'
+           alert('' + place.name + ' lugar se encuentra cerrado en este momento')
+         }
+       } else if(place.hasOwnProperty('opening_hours') === false){
+          alert('<div><strong>' + place.name + '</strong><br>' +
+          'Dirección: ' + place.vicinity + '<br>' +
+          'Rating: ' +  place.rating + '<br></div>')
+       } else {
+        return
+       }
+    // infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+    //       'Dirección: ' + place.vicinity + '<br>' +
+    //       'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>');
+    // infowindow.open(map, this);
   });
 }
 
@@ -182,35 +210,65 @@ function createMarker(place) {
         // }﻿
 
 
+// function AutocompleteDirectionsHandler(map) {
+//         this.map = map;
+//         this.originPlaceId = null;
+//         this.destinationPlaceId = null;
+//         this.travelMode = 'WALKING';
+//         let lat = localStorage.getItem('lat')
+//         let long = localStorage.getItem('lat')
+       
+//          var center = new google.maps.LatLng(lat,long)
+//           console.log(center)
+
+//         var originInput = document.getElementById('origin-input');
+//         var destinationInput = document.getElementById('destination-input');
+//         var modeSelector = document.getElementById('mode-selector');
+//         this.directionsService = new google.maps.DirectionsService;
+//         this.directionsDisplay = new google.maps.DirectionsRenderer;
+//         this.directionsDisplay.setMap(map);
+
+//         var originAutocomplete = new google.maps.places.Autocomplete(
+//             originInput, {placeIdOnly: true});
+//         var destinationAutocomplete = new google.maps.places.Autocomplete(
+//             destinationInput, {placeIdOnly: true});
+
+//         this.setupClickListener('changemode-walking', 'WALKING');
+//         this.setupClickListener('changemode-transit', 'TRANSIT');
+//         this.setupClickListener('changemode-driving', 'DRIVING');
+
+//         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+//         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+//       }
+
+
 function AutocompleteDirectionsHandler(map) {
         this.map = map;
-        this.originPlaceId = null;
-        this.destinationPlaceId = null;
         this.travelMode = 'WALKING';
         var originInput = document.getElementById('origin-input');
         var destinationInput = document.getElementById('destination-input');
         var modeSelector = document.getElementById('mode-selector');
         this.directionsService = new google.maps.DirectionsService;
+
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
+        this.directionsDisplay.setOptions({ suppressMarkers: true });
 
-        var originAutocomplete = new google.maps.places.Autocomplete(
-            originInput, {placeIdOnly: true});
-        var destinationAutocomplete = new google.maps.places.Autocomplete(
-            destinationInput, {placeIdOnly: true});
+        // new google.maps.places.Autocomplete(destinationInput);
+        // new google.maps.places.Autocomplete(originInput);
 
         this.setupClickListener('changemode-walking', 'WALKING');
         this.setupClickListener('changemode-transit', 'TRANSIT');
         this.setupClickListener('changemode-driving', 'DRIVING');
 
-        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
       }
-
       // Sets a listener on a radio button to change the filter type on Places
       // Autocomplete.
       AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
@@ -222,41 +280,48 @@ function AutocompleteDirectionsHandler(map) {
         });
       };
 
-      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
-        var me = this;
-        autocomplete.bindTo('bounds', this.map);
-        autocomplete.addListener('place_changed', function() {
-          var place = autocomplete.getPlace();
-          if (!place.place_id) {
-            window.alert("Please select an option from the dropdown list.");
-            return;
-          }
-          if (mode === 'ORIG') {
-            me.originPlaceId = place.place_id;
-          } else {
-            me.destinationPlaceId = place.place_id;
-          }
-          me.route();
-        });
-
-      };
-
       AutocompleteDirectionsHandler.prototype.route = function() {
-        if (!this.originPlaceId || !this.destinationPlaceId) {
-          return;
-        }
         var me = this;
+         let latitude = localStorage.getItem('latitude');
+        let longD = localStorage.getItem('longD');
+        let lat = localStorage.getItem('lat');
+        let long = localStorage.getItem('long');
+
+        // console.log(latitude,longD)
+        // console.log(lat,long)
+
+         // var center = document.getElementById('origin-input')
+         //  let destino = document.getElementById('destination-input');
 
         this.directionsService.route({
-          origin: {'placeId': this.originPlaceId},
-          destination: {'placeId': this.destinationPlaceId},
+          origin:(`${lat},${long}`),
+          destination:(`${latitude},${longD}`),
           travelMode: this.travelMode
         }, function(response, status) {
+          console.log(status)
           if (status === 'OK') {
-            me.directionsDisplay.setDirections(response);
+
+           me.directionsDisplay.setDirections(response);
+
+            var star = response.routes[0].legs[0].start_location;
+        var end = response.routes[0].legs[0].end_location;
+        // console.log(JSON.stringify(star, null, ''));         
+        function addMarker(pos) {
+          var image = './assets/img/tree.png';
+          new google.maps.Marker({
+            position: pos,
+            animation: google.maps.Animation.DROP,
+            map: map,
+            icon: image,
+            title: 'hola lab!'
+          });
+        }
+        addMarker(star);
+        addMarker(end);
           } else {
-            window.alert('Directions request failed due to ' + status);
+            window.alert('Lo sentimos, no hemos encontrado una ruta ' + status);
           }
+
         });
       };
 
@@ -284,4 +349,31 @@ function alertDGC(mensaje){
 }
 window.alert = function (message) {
  alertDGC(message);
+};
+
+
+
+function showPosition() {
+ let lat = localStorage.getItem('lat');
+ let long = localStorage.getItem('long');
+  fetch(`https://api.darksky.net/forecast/10dab22d21d6e22b3182546855456e74/${lat},${long}?units=auto`)
+      .then(function(response) {
+    // Turns the the JSON into a JS object
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);  
+      let location = data.timezone;
+      $('#dayAll').append(`
+  
+              <li><strong>${location}</strong></li>
+              <td><canvas id="ico" width="50" height="50"></canvas></td>
+              <li><strong>${Math.floor(data.currently.temperature)}°C</strong></li>
+        `)
+       const skycons = new Skycons({ 
+        'color': 'orange',
+      });
+      skycons.add("ico", `${data.currently.icon}`);
+      skycons.play();
+    });
 };
