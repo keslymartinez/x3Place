@@ -4,26 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Zomi</title>
-    <!-- Compiled and minified CSS -->
-  <link href="https://fonts.googleapis.com/css?family=Merienda+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
     
+    <!-- Compiled and minified CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <title>Near Me</title>
+    <link rel="stylesheet" href="assets/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/main.css">  
 </head>
 
-<body class="deep-orange accent-4">
-  
-<nav class="nav-extended hide-on-small-only deep-orange accent-4" >
+<body class="yellow darken-4">
+ <!-- inicializa el SDK de facebook -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '229481407597435',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v2.12'
+        });
+      };
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>  
+
+ <nav class="nav-extended hide-on-small-only   yellow-text text-darken-4 white" >
     <div class="container ">
-      <div class="valign-wrapper center">
-        <i class="large material-icons">favorite</i>
-        <h2  class="left-align">App Name</h2>
+      <div class="valign-wrapper">
+        <i class="fab fa-pied-piper-alt fa-5x"></i>
+        <h2  class="left-align">Near Me!</h2>
+        <ul id="dayAll" class="valign-wrapper"></ul>
     </div>
     </div>
 </nav>
- 
   <!-- Modal Structure -->
   <div class="container">
   <div class="row">
@@ -39,9 +61,7 @@
         <p class="light">Solo puedes ingresar a esta app mediante su usuario de facebook. Al iniciar estas aceptando nuestros <a href="">Terminos</a> y <a href="">Condiciones</a></p>
      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
-    </div>
+
   </div>
 </div>
 </div>
@@ -56,28 +76,63 @@
     js.src = "https://connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-    <section class="section center-aling " id="askBox">
 
-    <div class="container center white-text" id="init">
-      <br>
-      <span><a class="waves-effect waves-white pulse btn-floating btn-large white red-text  text-accent-3" name="action" id="play"><i class="fas fa-wrench"></i></a></span>
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
     </div>
-   
-            <div class="container center white-text " id ="testZone">
-            <div class="row" id="askB">
-            </div>
-        
-
-    </section>
-      <footer class="center  light">&copy <a href="#" class="white-text" target="_blank">app 2018</a></footer>
-
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+        <div class="row " id="info">
+        <div class="col s12 yellow darken-4 white-text" id="mode-info">
+        <span class="light"> Bienvenido a <h6>Near me</h6>, Quieres pasar un rato agradable pero no sabes a donde ir
+          Nosotros buscamos los parques mas cercanos a ti y enviamos información detallada, también podemos hacer la ruta que te lleva al parque en el medio de trasporte que elijas, siempre y cuando  este disponible en ese momento.</span>
+        <!--
+        <input id="origin-input" class="controls" type="text"
+        placeholder="Ingresa origen">
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Ingresa destino"> -->
+    <div id="mode-selector" class="controls yellow darken-4 col s12">
+      <input type="radio" name="type" id="changemode-walking" checked="checked" class="white-text">
+      <label for="changemode-walking" class="white-text"><i class="fas fa-child fa-2x"></i></label>
+      <input type="radio" name="type" id="changemode-transit" class="white-text">
+      <label for="changemode-transit" class="white-text"><i class="fas fa-bus fa-2x "></i></label>
+      <input type="radio" name="type" id="changemode-driving" class="white-text">
+      <label for="changemode-driving" class="white-text"><i class="fas fa-car fa-2x"></i></label>
+    </div>
+      </div>
+        </div>
+      <div class="col s12" id="map"></div>
+      <div id="modal">  </div>
   
-   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
+    </div>
+      </div>
+    </div>
+    </section>
+      <footer class="center white-text light yellow darken-4">&copy <a href="#" class="white-text" target="_blank">Near Me 2018</a></footer>
+     <!-- agrega el pluging de chat de facebook -->
+      <div class="fb-customerchat"
+    page_id="456047068126888"
+    minimized="true">
+    </div>
+    
 
- 
+    
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyB77YJD1n-YZDHN2HblLg8ArASiOs2h33I&libraries=places" >
+    </script>
+     
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="assets/js/materialize.js"></script>
+    <script src="assets/js/skycons.js"></script>
+    <script src="assets/js/map.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
 
