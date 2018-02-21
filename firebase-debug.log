@@ -1,0 +1,71 @@
+[debug] [2018-02-20T21:02:35.159Z] ----------------------------------------------------------------------
+[debug] [2018-02-20T21:02:35.163Z] Command:       /usr/bin/nodejs /usr/bin/firebase init
+[debug] [2018-02-20T21:02:35.164Z] CLI Version:   3.17.4
+[debug] [2018-02-20T21:02:35.164Z] Platform:      linux
+[debug] [2018-02-20T21:02:35.164Z] Node Version:  v7.10.1
+[debug] [2018-02-20T21:02:35.164Z] Time:          Tue Feb 20 2018 18:02:35 GMT-0300 (CLST)
+[debug] [2018-02-20T21:02:35.164Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-02-20T21:02:35.207Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-02-20T21:02:35.208Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/laboratoria/Desktop/2018/sprint 6++/x3/public
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-02-20T21:03:31.661Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-02-20T21:03:31.662Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/PlDCZ_LKeJqsNsB5B5lOrW99l7HoCrN73naKn59fncw',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Tue Feb 20 2018 18:03:31 GMT-0300 (CLST)
+[debug] [2018-02-20T21:03:32.041Z] <<< HTTP RESPONSE 200
+[debug] [2018-02-20T21:03:32.191Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Tue Feb 20 2018 18:03:32 GMT-0300 (CLST)
+[debug] [2018-02-20T21:03:33.510Z] <<< HTTP RESPONSE 200
+[info] 
+=== Database Setup
+[info] 
+[info] Firebase Realtime Database Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2018-02-20T21:03:48.169Z] >>> HTTP REQUEST GET https://findme-visidevi.firebaseio.com/.settings/rules.json  
+  
+ Tue Feb 20 2018 18:03:48 GMT-0300 (CLST)
+[debug] [2018-02-20T21:03:49.385Z] <<< HTTP RESPONSE 200
+[info] ✔  Database Rules for findme-visidevi have been downloaded to database.rules.json.
+[info] Future modifications to database.rules.json will update Database Rules when you run
+[info] firebase deploy.
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2018-02-20T21:03:57.547Z] TypeError: Cannot read property 'setRawMode' of null
+    at ReadStream.setRawMode (tty.js:38:15)
+    at Interface._setRawMode (readline.js:202:16)
+    at Interface.close (readline.js:325:10)
+    at ReadStream.ontermend (readline.js:116:10)
+    at emitNone (events.js:91:20)
+    at ReadStream.emit (events.js:188:7)
+    at endReadableNT (_stream_readable.js:975:12)
+    at _combinedTickCallback (internal/process/next_tick.js:80:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:128:9)

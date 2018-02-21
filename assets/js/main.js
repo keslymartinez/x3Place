@@ -1,38 +1,5 @@
 
 
-/**
-
-    .then(function(response) {
-    // Turns the the JSON into a JS object
-      return response.json();
-    })
-    .then(function(data) {
-      console.log(data)
-    })
-var infoWindow = new google.maps.InfoWindow({map: map});
-    // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-   **/ 
-
-  
-// modal para iniciar sesion 
-
 (function ($) {
     $(function () {
 
@@ -47,62 +14,6 @@ var infoWindow = new google.maps.InfoWindow({map: map});
 
     }); // end of document ready
 })(jQuery);
-
-
-
-
-
-
-// login de facebook 
-/**
-window.fbAsyncInit = function () {
-    FB.init({
-        appId: '229481407597435',
-        cookie: true,
-        xfbml: true,
-        version: "v2.5"
-    });
-
-    FB.getLoginStatus(function (response) {
-        if (response.status === 'connected') {
-            document.getElementById('status').innerHTML = "We are connected";
-        } else if (response === 'not authotized') {
-            document.getElementById('status').innerHTML = 'we are not logged in.'
-        } else {
-            document.getElementById('status').innerHTML = 'you are not logget into facebook';
-        }
-    });
-
-};
-
-(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) {
-        return;
-    }
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-function login() {
-    FB.login(function (response) {
-        if (response.status === 'connected') {
-            document.getElementById('status').innerHTML = "We are connected";
-            document.getElementById('login')
-        } else if (response === 'not authotized') {
-            document.getElementById('status').innerHTML = 'we are not logged in.'
-        } else {
-            document.getElementById('status').innerHTML = 'you are not logget into facebook';
-        }
-    });
-};
-
-
-**/
-
-
 
 $(function() {
     var app_id = '229481407597435';
@@ -198,5 +109,43 @@ else
 
 
 })
+
+      console.log(data);  
+      $('#dayAll').append(
+      	` <div class="white-text ">
+      	<h3>Santiago</h3>
+      	<canvas id="ico" width="50" height="50"></canvas>
+      	<h1>${Math.floor(data.currently.temperature)}°C</h1>
+      	
+      	<table class="centered responsive-table ">
+        <thead>
+          <tr>
+              <th>Temperatura</th>
+              <th>Viento</th>
+              <th>Humedad</th>
+              <th>Indic Uv</th>
+              <th>Presión</th>
+          </tr> 
+       </thead>
+        <tbody>
+            <tr>
+              <td>${Math.floor(data.currently.temperature)}°</td>
+              <td>${data.currently.windSpeed}</td>
+              <td>${data.currently.windSpeed}</td>
+              <td>${data.currently.uvIndex}</td>
+              <td>${data.currently.pressure}</td>
+          </tr>
+        </tbody>
+         <hr>
+       </table> 
+        <hr>
+       `
+      	);
+       const skycons = new Skycons({ 
+        'color': '#fafafa',
+      });
+      skycons.add("ico", `${data.currently.icon}`);
+      skycons.play();
+
 
 

@@ -1,16 +1,14 @@
-# zomato
 
-# **zomato API**
-- **PROYECTO EN FIREBASE** -(https://the-v2.firebaseapp.com)
-
+# ** MEAR ME **
+- **PROYECTO EN FIREBASE** -()
 
 ##  **OBJETIVO**
-MoSTRAR NUESTROS CONOCIMIENTOS del manejo de appis
+MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS
 
 ##  **DESARROLLO**
 
 -Es6 Fetch: Para llamar la api
--Zomato API
+-Google Maps API, -Google Place API
 
 ##Nuestra app se visualiza asi:
 
