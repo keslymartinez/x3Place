@@ -13,11 +13,7 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 6em;
 
 }
-#loginPlace {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
+
 
 #alert h6{
     padding: 2em;
@@ -32,4 +28,5 @@ img {
 }
 #logout {
 	margin-top: 10px;
+	background-color: blue;
 }

@@ -111,9 +111,8 @@ $(function() {
     var div_session = "<div id='facebook-session'>";+
                 "<srtrong></strong>"+
                 "<img>"+
-                "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a>"+
+                "<a href='#'id='logout' class='btn btn-danger'>Cerrar sesion</a>"+
                 "</div>";
-
 
 
 window.fbAsyncInit = function() {
@@ -122,7 +121,7 @@ window.fbAsyncInit = function() {
         status  :true,
         cookie: true,
         xfbml: true,
-        version: "v2.5"
+        version: "v2.8"
     });
 
  FB.getLoginStatus(function(response) {
