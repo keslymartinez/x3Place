@@ -15,6 +15,9 @@ h1,h2,h3,h4,h5,h6 {
     font-size: 6em;
 
 }
+
+
+
 h6{
   display: inline;
 }
@@ -24,9 +27,23 @@ h6{
   width: 100%;
 }
 
+
 #alert h6{
     padding: 2em;
 }
+
+
+strong, img {
+	display: block;
+}
+img {
+	margin: 0 auto;
+	border-radius: 10px;
+}
+#logout {
+	margin-top: 10px;
+	background-color: blue;
+
 #map {
   height: 60vh;
   width:100%;
@@ -91,4 +108,5 @@ canvas{
 
 span{
   font-weight: 300;
+
 }
