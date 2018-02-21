@@ -102,5 +102,11 @@ canvas{
 
 span{
   font-weight: 300;
-
+}
+#initApp{
+  height: 79vh;
+  width: 100%;
+}
+#login{
+  margin-top: 20%;
 }

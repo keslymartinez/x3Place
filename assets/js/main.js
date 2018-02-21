@@ -1,5 +1,3 @@
-
-
 (function ($) {
     $(function () {
 
@@ -11,6 +9,7 @@
 
         //or by click on trigger
         $('.trigger-modal').modal();
+
 
     }); // end of document ready
 })(jQuery);
@@ -110,42 +109,8 @@ else
 
 })
 
-      console.log(data);  
-      $('#dayAll').append(
-      	` <div class="white-text ">
-      	<h3>Santiago</h3>
-      	<canvas id="ico" width="50" height="50"></canvas>
-      	<h1>${Math.floor(data.currently.temperature)}°C</h1>
-      	
-      	<table class="centered responsive-table ">
-        <thead>
-          <tr>
-              <th>Temperatura</th>
-              <th>Viento</th>
-              <th>Humedad</th>
-              <th>Indic Uv</th>
-              <th>Presión</th>
-          </tr> 
-       </thead>
-        <tbody>
-            <tr>
-              <td>${Math.floor(data.currently.temperature)}°</td>
-              <td>${data.currently.windSpeed}</td>
-              <td>${data.currently.windSpeed}</td>
-              <td>${data.currently.uvIndex}</td>
-              <td>${data.currently.pressure}</td>
-          </tr>
-        </tbody>
-         <hr>
-       </table> 
-        <hr>
-       `
-      	);
-       const skycons = new Skycons({ 
-        'color': '#fafafa',
-      });
-      skycons.add("ico", `${data.currently.icon}`);
-      skycons.play();
+
+
 
 
 

@@ -1,32 +1,20 @@
+$('#initApp').addClass('show');
+$('#mapContainer').addClass('hide');
+$('#infoApp').addClass('hide');
 
- let totalPLaces='';
-$( document ).ready(function() {
-     $('.modal').modal();
+$('#jump').click(function(e){
+  e.preventDefault()
 
-        //now you can open modal from code
-        $('#modal1').modal('open');
+$('#initApp').addClass('hide');
+$('#mapContainer').removeClass('hide');
+$('#infoApp').removeClass('hide');
 
-        //or by click on trigger
-        $('.trigger-modal').modal();
-
-     getLocation()
+  getLocation()
 
 });
-(function ($) {
-    $(function (){
 
-        //initialize all modals           
-        $('.modal').modal();
-        showPosition()
-
-        // //now you can open modal from code
-        // $('#modal1').modal('open');
-
-        // //or by click on trigger
-        // $('.trigger-modal').modal();
-
-    }); // end of document ready
-})(jQuery);
+ let totalPLaces='';
+  showPosition()
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(initMap);
@@ -209,21 +197,21 @@ function AutocompleteDirectionsHandler(map) {
 
            me.directionsDisplay.setDirections(response);
 
-        //     var star = response.routes[0].legs[0].start_location;
-        // var end = response.routes[0].legs[0].end_location;
-        // // console.log(JSON.stringify(star, null, ''));         
-        // function addMarker(pos) {
-        //   var image = './assets/img/tree.png';
-        //   new google.maps.Marker({
-        //     position: pos,
-        //     animation: google.maps.Animation.DROP,
-        //     map: map,
-        //     icon: image,
-        //     title: 'hola lab!'
-        //   });
-        // }
-        // addMarker(star);
-        // addMarker(end);
+          var star = response.routes[0].legs[0].start_location;
+          var end = response.routes[0].legs[0].end_location;
+          // console.log(JSON.stringify(star, null, ''));         
+          function addMarker(pos) {
+          var image = './assets/img/tree.png';
+          new google.maps.Marker({
+          position: pos,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          icon: image,
+          title: 'hola lab!'
+          });
+          }
+          addMarker(star);
+          addMarker(end);
           } else {
             window.alert('Lo sentimos, no hemos encontrado una ruta ' + status);
           }
@@ -231,15 +219,10 @@ function AutocompleteDirectionsHandler(map) {
         });
       };
 
-
-
-
-
-
 function alertDGC(mensaje){
   var dgcTiempo=500
   var ventanaCS=`<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">${mensaje}<br><br>
-  <a class="dgcAceptar waves-effect waves-light btn white-text deep-orange accent-4">Gracias</a></div></div></div>`;
+  <a class="dgcAceptar waves-effect waves-light btn white-text yellow darken-4">Selecionar como destion</a></div></div></div>`;
   $('body').append(ventanaCS);
   var alVentana=$('.dgcVentana').height();
   var alNav=$(window).height();
