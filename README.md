@@ -12,7 +12,7 @@ MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS
 
 ##Nuestra app se visualiza asi:
 
-![Alt text](assets/img/capture1.jpeg),
+![Alt text](assets/img/capture5.jpeg),
 ![Alt text](assets/img/capture2.jpeg),
 ![Alt text](assets/img/capture4.jpeg)
 
