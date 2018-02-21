@@ -31,7 +31,13 @@ h6{
   height: 50vh;
   width:100%;
  }
+ #dayAll{
+  margin-left: 10%;
 
+ }
+canvas{
+  padding:  2em;
+}
  #tamaño{
   max-height: 5em;
   min-width: 1em;
