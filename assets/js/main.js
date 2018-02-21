@@ -106,7 +106,7 @@ function login() {
 
 $(function() {
     var app_id = '229481407597435';
-    var scopes = 'email, user_friends, user_online_presence';
+    var scopes = 'email, user_friends, public_profile';
     var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar secion con Facebook</a>'
     var div_session = "<div id='facebook-session'>";+
                 "<srtrong></strong>"+
@@ -122,7 +122,7 @@ window.fbAsyncInit = function() {
         status  :true,
         cookie: true,
         xfbml: true,
-        version: "v2.1"
+        version: "v2.5"
     });
 
  FB.getLoginStatus(function(response) {
