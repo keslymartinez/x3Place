@@ -1,10 +1,6 @@
 
 # ** NEAR ME **
-<<<<<<< HEAD
 - **PROYECTO EN FIREBASE** - (https://findme-visidevi.firebaseapp.com)
-=======
-- **PROYECTO EN FIREBASE** -(https://findme-visidevi.firebaseapp.com)
->>>>>>> a91535121d3d292b193ed2cd1cca79705522d59f
 
 ##  **OBJETIVO**
 MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS

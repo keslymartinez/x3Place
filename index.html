@@ -1,135 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <!-- Compiled and minified CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- Compiled and minified CSS -->
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-  <title>Near Me</title>
-  <link rel="stylesheet" href="assets/css/materialize.css">
-  <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
+    <title>Near Me</title>
+    <link rel="stylesheet" href="assets/css/materialize.css">
+    <link rel="stylesheet" href="assets/css/main.css">  
 </head>
 
 <body class="yellow darken-4">
-  <!-- inicializa el SDK de facebook -->
-  <script>
-    window.fbAsyncInit = function () {
-      FB.init({
-        appId: '229481407597435',
-        autoLogAppEvents: true,
-        xfbml: true,
-        version: 'v2.12'
-      });
-    };
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) {
-        return;
-      }
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
+ <!-- inicializa el SDK de facebook -->
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '229481407597435',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v2.12'
+        });
+      };
+      (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>  
 
-  <nav class="nav-extended hide-on-small-only yellow-text text-darken-4 white">
+ <nav class="nav-extended hide-on-small-only yellow-text text-darken-4 white">
     <div class="container ">
       <div class="valign-wrapper">
-        <i class="fab fa-pied-piper-alt fa-5x"></i>
-        <h2 class="left-align">Near Me!</h2>
+        <i  class="fab fa-pied-piper-alt fa-5x"></i>
+        <h2  class="left-align">Near Me!</h2>
         <ul id="dayAll" class="valign-wrapper"></ul>
-      </div>
     </div>
-  </nav>
-  <!-- informacion sobre el uso del la APp -->
-  <div class="section" id="infoApp">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col s12 yellow darken-4 white-text" id="mode-info">
-          <span class="light"> Bienvenido a
-            <h6>Near me</h6>, Quieres pasar un rato agradable pero no sabes a donde ir Nosotros buscamos los parques mas cercanos
-            a ti y enviamos información detallada, también podemos hacer la ruta que te lleva al parque en el medio de trasporte
-            que elijas, siempre y cuando este disponible en ese momento.</span>
-          <!--
+    </div>
+</nav>
+<!-- informacion sobre el uso del la APp -->
+<div class="section" id="infoApp">
+<div class="container-fluid">
+  <div class="row" >
+    <div class="col s12 yellow darken-4 white-text" id="mode-info">
+      <span class="light"> Bienvenido a <h6>Near me</h6>, Quieres pasar un rato agradable pero no sabes a donde ir
+        Nosotros buscamos los parques mas cercanos a ti y enviamos información detallada, también podemos hacer la ruta que te lleva al parque en el medio de trasporte que elijas, siempre y cuando  este disponible en ese momento.</span>
+      <!--
       <input id="origin-input" class="controls" type="text"
       placeholder="Ingresa origen">
   <input id="destination-input" class="controls" type="text"
       placeholder="Ingresa destino"> -->
-          <div id="mode-selector" class="controls yellow darken-4 col s12">
-            <input type="radio" name="type" id="changemode-walking" checked="checked" class="white-text">
-            <label for="changemode-walking" class="white-text">
-              <i class="fas fa-child fa-2x"></i>
-            </label>
-            <input type="radio" name="type" id="changemode-transit" class="white-text">
-            <label for="changemode-transit" class="white-text">
-              <i class="fas fa-bus fa-2x "></i>
-            </label>
-            <input type="radio" name="type" id="changemode-driving" class="white-text">
-            <label for="changemode-driving" class="white-text">
-              <i class="fas fa-car fa-2x"></i>
-            </label>
-          </div>
-        </div>
+      <div id="mode-selector" class="controls yellow darken-4 col s12">
+        <input type="radio" name="type" id="changemode-walking" checked="checked" class="white-text">
+        <label for="changemode-walking" class="white-text"><i class="fas fa-child fa-2x"></i></label>
+        <input type="radio" name="type" id="changemode-transit" class="white-text">
+        <label for="changemode-transit" class="white-text"><i class="fas fa-bus fa-2x "></i></label>
+        <input type="radio" name="type" id="changemode-driving" class="white-text">
+        <label for="changemode-driving" class="white-text"><i class="fas fa-car fa-2x"></i></label>
       </div>
     </div>
-  </div>
+    </div>
+</div>
+</div>
 
-  <!-- login con facebook KESLY -->
+<!-- login con facebook KESLY -->
 
-  <div class="section white" id="initApp">
-    <div class="container-fluid center">
-      <div class="row">
-        <div class="col s12">
-          <a class="waves-effect waves-light indigo darken-4 btn-large" id="login">
-            <i class="fab fa-facebook-square "></i> Inicia sesíon con Facebook</a>
-
-        </div>
-        <div class="col s6 offset-s3 ">
-          <p class="light">Solo puedes ingresar a esta app mediante un usuario de Facebook. Al iniciar estas aceptando nuestros
-            <a href="">Terminos</a> y
-            <a href="" id="jump">Condiciones</a>
-          </p>
-        </div>
+ <div class="section white" id="initApp">
+  <div class="container-fluid center">
+    <div class="row">
+      <div class="col s12">
+      <a class="waves-effect waves-light indigo darken-4 btn-large" id="login"><i class="fab fa-facebook-square "></i> Inicia sesíon con Facebook</a>
+        
       </div>
+     <div class="col s6 offset-s3 ">
+        <p class="light">Solo puedes ingresar a esta app mediante un usuario de Facebook. Al iniciar estas aceptando nuestros <a href="">Terminos</a> y <a href="" id="jump">Condiciones</a></p>
+     </div>
     </div>
   </div>
+</div>
 
-  <!-- Mapa -->
+<!-- Mapa -->
 
-  <div class="section" id='mapContainer'>
-    <div class="container-fluid">
-      <div class="col s12" id="map"></div>
-    </div>
-  </div>
+<div class="section" id='mapContainer'>
+  <div class="container-fluid">
+   <div class="col s12" id="map"></div>
+ </div>
+</div>
 
-  <!-- footer -->
+<!-- footer -->
 
-  <footer class="center white-text light yellow darken-4">&copy
-    <a href="#" class="white-text" target="_blank">Near Me 2018</a>
-  </footer>
+<footer class="center white-text light yellow darken-4">&copy <a href="#" class="white-text" target="_blank">Near Me 2018</a></footer>
 
-  <!-- agrega el pluging de chat de facebook -->
-  <div class="fb-customerchat" page_id="456047068126888" minimized="true">
-  </div>
+ <!-- agrega el pluging de chat de facebook -->
+  <div class="fb-customerchat"
+page_id="456047068126888"
+minimized="true">
+</div>
+    
 
-
-
-  <script src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyB77YJD1n-YZDHN2HblLg8ArASiOs2h33I&libraries=places">
-  </script>
-
-  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="assets/js/materialize.js"></script>
-  <script src="assets/js/skycons.js"></script>
-  <script src="assets/js/map.js"></script>
-  <script src="assets/js/main.js"></script>
+    
+    <script 
+    src="https://maps.googleapis.com/maps/api/js?&key=AIzaSyB77YJD1n-YZDHN2HblLg8ArASiOs2h33I&libraries=places" >
+    </script>
+     
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="assets/js/materialize.js"></script>
+    <script src="assets/js/skycons.js"></script>
+    <script src="assets/js/map.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
+ 
