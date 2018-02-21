@@ -10,12 +10,14 @@ $( document ).ready(function() {
         $('.trigger-modal').modal();
 
      getLocation()
+
 });
 (function ($) {
     $(function (){
 
         //initialize all modals           
         $('.modal').modal();
+        showPosition()
 
         // //now you can open modal from code
         // $('#modal1').modal('open');
@@ -44,7 +46,7 @@ function initMap(position){
 
     map = new google.maps.Map(document.getElementById('map'),{
      center: center,
-     zoom:15 
+     zoom:12 
     }); 
      
 
@@ -53,6 +55,7 @@ function initMap(position){
     position: center,
     icon: center.icon,
     draggable: true,
+    animation: google.maps.Animation.BOUNCE,
     map: map
   });
 
@@ -85,7 +88,7 @@ function createMarker(place) {
 
    //modificamos la imagen del marcador
    var image = {
-      url: place.icon,
+      url: './assets/img/tree8.png',
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),
@@ -113,26 +116,39 @@ function createMarker(place) {
 //     }
     
       var infowindow = new google.maps.InfoWindow();
-    //  alert(`Encontramos ${totalPLaces} parques cercanos a  ti!`);  ACTIVAR AL FINALIZAR EL PROYECTO
+    alert(`Encontramos ${totalPLaces} parques cercanos a  ti!`); 
       //console.log(marker)
       google.maps.event.addListener(marker, 'click', function() {
        localStorage.setItem('latitude', place.geometry.viewport.f.b);
        localStorage.setItem('longD', place.geometry.viewport.b.b);
      
       })
+      console.log(place);
     google.maps.event.addListener(marker, 'click', function() {
       //$(`#modal1`).modal('open');
        console.log(place);
        let status;
-       if(place.opening_hours.open_now === true){
+       if(place.hasOwnProperty('opening_hours') === true){
+        if(place.opening_hours.open_now === true){
         status = 'Abierto'
-       } else {
-        status = 'Cerrado'
-       }
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+        alert('<div><strong>' + place.name + '</strong><br>' +
           'Dirección: ' + place.vicinity + '<br>' +
-          'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>');
-    infowindow.open(map, this);
+          'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>')
+          }else {
+          status = 'Cerrado'
+           alert('' + place.name + ' lugar se encuentra cerrado en este momento')
+         }
+       } else if(place.hasOwnProperty('opening_hours') === false){
+          alert('<div><strong>' + place.name + '</strong><br>' +
+          'Dirección: ' + place.vicinity + '<br>' +
+          'Rating: ' +  place.rating + '<br></div>')
+       } else {
+        return
+       }
+    // infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+    //       'Dirección: ' + place.vicinity + '<br>' +
+    //       'Rating: ' +  place.rating + '<br><strong>'  + status +'</strong></div>');
+    // infowindow.open(map, this);
   });
 }
 
@@ -237,11 +253,13 @@ function AutocompleteDirectionsHandler(map) {
         var destinationInput = document.getElementById('destination-input');
         var modeSelector = document.getElementById('mode-selector');
         this.directionsService = new google.maps.DirectionsService;
+
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
+        this.directionsDisplay.setOptions({ suppressMarkers: true });
 
-        new google.maps.places.Autocomplete(destinationInput);
-        new google.maps.places.Autocomplete(originInput);
+        // new google.maps.places.Autocomplete(destinationInput);
+        // new google.maps.places.Autocomplete(originInput);
 
         this.setupClickListener('changemode-walking', 'WALKING');
         this.setupClickListener('changemode-transit', 'TRANSIT');
@@ -282,10 +300,28 @@ function AutocompleteDirectionsHandler(map) {
         }, function(response, status) {
           console.log(status)
           if (status === 'OK') {
+
            me.directionsDisplay.setDirections(response);
+
+            var star = response.routes[0].legs[0].start_location;
+        var end = response.routes[0].legs[0].end_location;
+        // console.log(JSON.stringify(star, null, ''));         
+        function addMarker(pos) {
+          var image = './assets/img/tree.png';
+          new google.maps.Marker({
+            position: pos,
+            animation: google.maps.Animation.DROP,
+            map: map,
+            icon: image,
+            title: 'hola lab!'
+          });
+        }
+        addMarker(star);
+        addMarker(end);
           } else {
-            //window.alert('Directions request failed due to ' + status);
+            window.alert('Lo sentimos, no hemos encontrado una ruta ' + status);
           }
+
         });
       };
 
@@ -315,4 +351,87 @@ window.alert = function (message) {
  alertDGC(message);
 };
 
-   
+
+
+function showPosition() {
+ let lat = localStorage.getItem('lat');
+ let long = localStorage.getItem('long');
+  fetch(`https://api.darksky.net/forecast/10dab22d21d6e22b3182546855456e74/${lat},${long}?units=auto`)
+      .then(function(response) {
+    // Turns the the JSON into a JS object
+      return response.json();
+    })
+    .then(function(data) {
+      console.log(data);  
+      let location = data.timezone;
+      $('#dayAll').append(
+        ` <div class="black-text ">
+        <p><strong>${location}</strong></p>
+        <canvas id="ico" width="50" height="50"></canvas>
+        <p><strong>Temperatura </strong>${Math.floor(data.currently.temperature)}°C</p> </div>
+       `
+        );
+       const skycons = new Skycons({ 
+        'color': '#fafafa',
+      });
+      skycons.add("ico", `${data.currently.icon}`);
+      skycons.play();
+      timeW();
+
+      //console.log(data.daily.data)
+     
+      // for (let i = 7; i < week.length; i++) {
+      //  let dayyy = week[i].time;
+      //  let getDate = new Date(day * 1000);
+      //  //let dayOfW = getDate.split('');
+      //  console.log(JSON.stringify(getDate));
+      //  console.log(Object.keys(JSON.stringify(getDate)));
+
+
+       function timeW() {
+        let days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ];
+
+          let week = data.daily.data;
+          //console.log(week);
+          for (let i in week) {
+            let date = new Date(week[i].time * 1000);
+            let day = days[date.getDay()];
+            //console.log(day);
+            const skycons = new Skycons({
+            'color': '#fafafa',
+          });
+          icon = week[i].icon;
+          
+          
+            $('#weekAll').append(`
+              <table class="centered responsive-table ">
+              <tbody> 
+              <tr>
+              
+              <th></th>
+              <td><canvas id="icon${[i]}" width="20" height="20"></canvas></td>
+              <th>${day}</td>
+              <td class="white-text"><i class="tiny material-icons white-text">arrow_downward</i>${Math.floor(week[i].temperatureMin)}°c </td>
+               <td class="white-text"><i class="tiny material-icons white-text">arrow_upward</i>${Math.floor(week[i].temperatureMax)}°c </td>
+          </tr></tbody></table> `
+
+
+              // <div class="col s4 "></div>
+              //       <div class="col s4 "></div>
+              //       <div class="col s2 "></div>
+              //       <div class="col s2"></div>`
+            );
+          skycons.add(`icon${[i]}`, icon );
+      }
+  skycons.play();
+    }
+    });
+};
