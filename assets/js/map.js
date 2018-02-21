@@ -152,100 +152,6 @@ function createMarker(place) {
   });
 }
 
-
-
-
-
-    
-
-//             google.maps.event.addListener(marker, 'click',function(){
-//               console.log(place)
-//   var dgcTiempo=500
-//   var ventanaCS=`<div class="dgcAlert"><div class="dgcVentana"><div class="dgcCerrar"></div><div class="dgcMensaje">${name}<br><a class="waves-effect waves-light btn white-text  deep-orange accent-4 modal-trigger pulse" href="#modal1">See More</a></div></div></div>`;
-//   $('body').append(ventanaCS);
-//   var alVentana=$('.dgcVentana').height();
-//   var alNav=$(window).height();
-//   var supNav=$(window).scrollTop();
-//   $('.dgcAlert').css('height',$(document).height());
-//   $('.dgcVentana').css('top',((alNav-alVentana)/2+supNav-100)+'px');
-//   $('.dgcAlert').css('display','block');
-//   $('.dgcAlert').animate({opacity:1},dgcTiempo);
-//   $('.dgcCerrar,.dgcAceptar').click(function(e) {
-//     $('.dgcAlert').animate({opacity:0},dgcTiempo);
-//     setTimeout("$('.dgcAlert').remove()",dgcTiempo);
-//   });
-// })
-  //             console.log(place)
-  //             let name = place.name
-  //             let id = place.place_id
-  //             let name2= place.name
-  //             let name3 = place.name
-               
-  //              content: 'Hello'
-  //              alert(name, id)
-
-             
-  //             $("#modal").empty();
-
-
-  //              $("#modal").append(` 
-  // <!-- Modal Structure -->
-  // <div id="modal1" class="modal">
-  //   <div class="modal-content">
-  //     <h4>${name}</h4>
-  //     <p>A bunch of text</p>
-  //   </div>
-  //   <div class="modal-footer">
-  //     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  //   </div>
-  // </div>`);
-  //                $('.modal').modal();
-  //                 $(`#modal${id}`).modal('open');
-              
-               
-  //             infowindow.setContent(place.name);
-  //             infowindow.open(map.this);
-  //           })
-        
-        // }﻿
-
-
-// function AutocompleteDirectionsHandler(map) {
-//         this.map = map;
-//         this.originPlaceId = null;
-//         this.destinationPlaceId = null;
-//         this.travelMode = 'WALKING';
-//         let lat = localStorage.getItem('lat')
-//         let long = localStorage.getItem('lat')
-       
-//          var center = new google.maps.LatLng(lat,long)
-//           console.log(center)
-
-//         var originInput = document.getElementById('origin-input');
-//         var destinationInput = document.getElementById('destination-input');
-//         var modeSelector = document.getElementById('mode-selector');
-//         this.directionsService = new google.maps.DirectionsService;
-//         this.directionsDisplay = new google.maps.DirectionsRenderer;
-//         this.directionsDisplay.setMap(map);
-
-//         var originAutocomplete = new google.maps.places.Autocomplete(
-//             originInput, {placeIdOnly: true});
-//         var destinationAutocomplete = new google.maps.places.Autocomplete(
-//             destinationInput, {placeIdOnly: true});
-
-//         this.setupClickListener('changemode-walking', 'WALKING');
-//         this.setupClickListener('changemode-transit', 'TRANSIT');
-//         this.setupClickListener('changemode-driving', 'DRIVING');
-
-//         this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-//         this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
-//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-//         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-//       }
-
-
 function AutocompleteDirectionsHandler(map) {
         this.map = map;
         this.travelMode = 'WALKING';
@@ -303,21 +209,21 @@ function AutocompleteDirectionsHandler(map) {
 
            me.directionsDisplay.setDirections(response);
 
-            var star = response.routes[0].legs[0].start_location;
-        var end = response.routes[0].legs[0].end_location;
-        // console.log(JSON.stringify(star, null, ''));         
-        function addMarker(pos) {
-          var image = './assets/img/tree.png';
-          new google.maps.Marker({
-            position: pos,
-            animation: google.maps.Animation.DROP,
-            map: map,
-            icon: image,
-            title: 'hola lab!'
-          });
-        }
-        addMarker(star);
-        addMarker(end);
+        //     var star = response.routes[0].legs[0].start_location;
+        // var end = response.routes[0].legs[0].end_location;
+        // // console.log(JSON.stringify(star, null, ''));         
+        // function addMarker(pos) {
+        //   var image = './assets/img/tree.png';
+        //   new google.maps.Marker({
+        //     position: pos,
+        //     animation: google.maps.Animation.DROP,
+        //     map: map,
+        //     icon: image,
+        //     title: 'hola lab!'
+        //   });
+        // }
+        // addMarker(star);
+        // addMarker(end);
           } else {
             window.alert('Lo sentimos, no hemos encontrado una ruta ' + status);
           }
