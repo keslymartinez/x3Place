@@ -13,11 +13,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 900;
     letter-spacing: -5px;
     font-size: 6em;
-
 }
-
-
-
 h6{
   display: inline;
 }
@@ -27,11 +23,9 @@ h6{
   width: 100%;
 }
 
-
 #alert h6{
     padding: 2em;
 }
-
 
 strong, img {
 	display: block;
@@ -43,7 +37,7 @@ img {
 #logout {
 	margin-top: 10px;
 	background-color: blue;
-
+}
 #map {
   height: 60vh;
   width:100%;
