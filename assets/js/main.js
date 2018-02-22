@@ -14,7 +14,7 @@ $(function() {
         $('#initApp').addClass('hide');
             $('#mapContainer').removeClass('hide');
             $('#infoApp').removeClas
-            window.preventDefault();
+            
     }else {
         callback(false);
         
@@ -48,7 +48,6 @@ $(function() {
             $('#initApp').addClass('hide');
             $('#mapContainer').removeClass('hide');
             $('#infoApp').removeClas
-            window.preventDefault();
             console.log(response.status)
 
             }, {scope: scopes})
