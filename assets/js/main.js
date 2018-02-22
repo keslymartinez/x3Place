@@ -30,12 +30,16 @@ $(function() {
    var getFacebookData = function()
    { 
         FB.api('/me', function(response){
-            $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn-flat yellow-text text-darken-4'>Cerrar sesion</a></div>`);
-            $('#facebook-session strong').text("Bienvenido: "+response.name);
-            $('#facebook-session img').attr('src', 'http//graph.facebook.com/'+response.id+'/picture?type=large');
+            console.log(response)
+            let name = response.name;
+            let img = 'http//graph.facebook.com/'+response.id+'/picture?type=large';
+            $( '#div_session').append(`
+                <div id='facebook-session'><srtrong>${name}</strong>
+                <img src="${}img">
+                <a href='#' id='logout' class='btn-flat yellow-text text-darken-4'> Cerrar sesion</a>
+                </div>`);
         });
 }
-
 
    function facebookLogin(){
     checkLoginState(function(response){
@@ -59,8 +63,7 @@ $(function() {
     FB.getLoginStatus(function(response){
         if (response.status === 'connected') {
             FB.logout(function(response){
-                $('#facebook-session').remove();
-                $('#initApp').addClass('show');
+                $('#initApp').removeClass('hide');
                 $('#mapContainer').addClass('hide');
                 $('#infoApp').addClass('hide');
             })
@@ -78,7 +81,7 @@ $(document).on('click', '#login', function(e) {
 $(document).on('click', '#logout', function(e) {
     e.preventDefault();
 
-if(confirm("esta seguro?"))
+if(confirm("Desea cerrar sesion?"))
     facebookLogout();
 else
     return false;
