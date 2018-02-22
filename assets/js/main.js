@@ -1,18 +1,8 @@
-(function ($) {
-    $(function () {
+$('#inicioFacebook').click(function(e){
+    e.preventDefault();
+    facebookLogin();
 
-        //initialize all modals           
-        $('.modal').modal();
-
-        //now you can open modal from code
-        $('#modal1').modal('open');
-
-        //or by click on trigger
-        $('.trigger-modal').modal();
-
-
-    }); // end of document ready
-})(jQuery);
+})
 
 $(function() {
     var scopes = 'email, user_friends, public_profile';
@@ -50,7 +40,9 @@ $(function() {
         });
    $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a></div>`);
 }
-   var facebookLogin = function(){
+
+
+   function facebookLogin(){
     checkLoginState(function(response){
         if(!response) {
             FB.login(function(response){
@@ -60,6 +52,7 @@ $(function() {
             $('#mapContainer').removeClass('hide');
             $('#infoApp').removeClas
             window.preventDefault();
+            console.log(response.status)
 
             }, {scope: scopes})
         }
