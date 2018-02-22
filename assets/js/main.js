@@ -30,7 +30,6 @@ $(function() {
    var getFacebookData = function()
    { 
         FB.api('/me', function(response){
-            $('#login').after(div_session);
             $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn-flat yellow-text text-darken-4'>Cerrar sesion</a></div>`);
             $('#facebook-session strong').text("Bienvenido: "+response.name);
             $('#facebook-session img').attr('src', 'http//graph.facebook.com/'+response.id+'/picture?type=large');
@@ -60,7 +59,6 @@ $(function() {
     FB.getLoginStatus(function(response){
         if (response.status === 'connected') {
             FB.logout(function(response){
-                $('#facebook-session').before(btn_login);
                 $('#facebook-session').remove();
                 $('#initApp').addClass('show');
                 $('#mapContainer').addClass('hide');
