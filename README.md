@@ -29,8 +29,8 @@ MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS
 - Hosting Firebase
 
 ## Autoras
-- **Nadia** - [@user](https://github.com/user)
-- **Kesly** - [@user](https://github.com/user)
+- **Nadia** - [@Nadia](https://github.com/NadiaMorales)
+- **Kesly** - [@Kesly](https://github.com/keslymartinez)
 
 - **Visaka** - [@visidevi](https://github.com/visidevi)
 
