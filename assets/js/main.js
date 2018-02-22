@@ -1,10 +1,7 @@
-$('#inicioFacebook').click(function(e){
-    e.preventDefault();
-    facebookLogin();
 
-})
 
 $(function() {
+
     var scopes = 'email, user_friends, public_profile';
     // var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar secion con Facebook</a>'
 
