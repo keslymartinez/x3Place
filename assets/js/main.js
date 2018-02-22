@@ -14,8 +14,7 @@ $(function() {
          $('#initApp').addClass('hide');
             $('#mapContainer').removeClass('hide');
             $('#infoApp').removeClass('hide');
-              getLocation()
-            
+              getLocation()        
     }else {
         callback(false);
         
@@ -32,11 +31,10 @@ $(function() {
    { 
         FB.api('/me', function(response){
             $('#login').after(div_session);
-            $('#login').remove();
+            $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn-flat yellow-text text-darken-4'>Cerrar sesion</a></div>`);
             $('#facebook-session strong').text("Bienvenido: "+response.name);
             $('#facebook-session img').attr('src', 'http//graph.facebook.com/'+response.id+'/picture?type=large');
         });
-   $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a></div>`);
 }
 
 
