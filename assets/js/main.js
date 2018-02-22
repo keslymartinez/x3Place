@@ -34,10 +34,12 @@ $(function() {
             let name = response.name;
             let img = 'http//graph.facebook.com/'+response.id+'/picture?type=large';
             $( '#div_session').append(`
-                <div id='facebook-session'><srtrong>${name}</strong>
+
+                <div id="facebook-session" ><srtrong>${name}</strong>
                 <img src=${img}>
-                <a href='#' id='logout' class='btn-flat yellow-text text-darken-4'> Cerrar sesion</a>
-                </div>`);
+                <a href="#" id="logout" class="waves-effect waves-light indigo darken-4 btn-large" >Cerrar sesion</a>
+                </div>`
+                );
         });
 }
 
