@@ -17,7 +17,7 @@
 $(function() {
     var scopes = 'email, user_friends, public_profile';
     // var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar secion con Facebook</a>'
-$( '#div_session').append("<div id='facebook-session'>";+
+$( '#div_session').append("<div id='facebook-session'>"+
                 "<srtrong></strong>"+
                 "<img>"+
                 "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a>"+
