@@ -17,12 +17,6 @@
 $(function() {
     var scopes = 'email, user_friends, public_profile';
     // var btn_login = '<a href="#" id="login" class="btn btn-primary">Iniciar secion con Facebook</a>'
-$( '#div_session').append("<div id='facebook-session'>"+
-                "<srtrong></strong>"+
-                "<img>"+
-                "<a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a>"+
-                "</div>");
-
 
 
  var statusChangeCallback = function(response, callback) {
@@ -36,10 +30,9 @@ $( '#div_session').append("<div id='facebook-session'>"+
             window.preventDefault();
     }else {
         callback(false);
-
         
     }
-} $( "#close" ).html( "<span>Usuario conectado</span>" );
+} 
     var checkLoginState = function(callback) {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response, function(data) {
@@ -55,8 +48,8 @@ $( '#div_session').append("<div id='facebook-session'>"+
             $('#facebook-session strong').text("Bienvenido: "+response.name);
             $('#facebook-session img').attr('src', 'http//graph.facebook.com/'+response.id+'/picture?type=large');
         });
-   }
-
+   $( '#div_session').append(`<div id='facebook-session'><srtrong></strong><img><a href='#' id='logout' class='btn btn-danger'>Cerrar sesion</a></div>`);
+}
    var facebookLogin = function(){
     checkLoginState(function(response){
         if(!response) {
