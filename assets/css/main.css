@@ -1,9 +1,10 @@
 #map {
-        width:100%;
+        
         height: 100vh;
         
  }
-body{
+
+/*/*/*body{
    font-family: 'Lato', sans-serif !important;
 }
 
@@ -41,7 +42,7 @@ img {
   margin-left: 10%;
 }
 
-canvas{
+nav canvas{
   padding:  2em;
 }
 
@@ -84,7 +85,6 @@ canvas{
       }
 
       #mode-selector label {
-        font-family: Roboto;
         font-size: 13px;
         font-weight: 300;
       }
