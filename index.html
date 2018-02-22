@@ -20,6 +20,8 @@
       window.fbAsyncInit = function () {
         FB.init({
           appId: '229481407597435',
+          status  :true,
+         cookie: true,
           autoLogAppEvents: true,
           xfbml: true,
           version: 'v2.12'
@@ -77,11 +79,12 @@
   <div class="container-fluid center">
     <div class="row">
       <div class="col s12">
-      <a class="waves-effect waves-light indigo darken-4 btn-large" id="login"><i class="fab fa-facebook-square "></i> Inicia sesíon con Facebook</a>
+      <a  id="login" class="waves-effect waves-light indigo darken-4 btn-large"><i class="fab fa-facebook-square "></i> Inicia sesíon con Facebook</a>
         
       </div>
      <div class="col s6 offset-s3 ">
         <p class="light">Solo puedes ingresar a esta app mediante un usuario de Facebook. Al iniciar estas aceptando nuestros <a href="">Terminos</a> y <a href="" id="jump">Condiciones</a></p>
+        <span></span>
      </div>
     </div>
   </div>
@@ -100,11 +103,10 @@
 <footer class="center white-text light yellow darken-4">&copy <a href="#" class="white-text" target="_blank">Near Me 2018</a></footer>
 
  <!-- agrega el pluging de chat de facebook -->
-  <div class="fb-customerchat"
-page_id="456047068126888"
-minimized="true">
-</div>
-    
+   <div class="fb-customerchat"
+    page_id="456047068126888"
+    minimized="true">
+    </div>
 
     
     <script 
