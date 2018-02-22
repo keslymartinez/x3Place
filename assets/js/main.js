@@ -84,6 +84,7 @@ $(document).on('click', '#logout', function(e) {
 if(confirm("Desea cerrar sesion?"))
     facebookLogout();
     $('#div_session').empty();
+    window.reload();
 else
     return false;
 })
