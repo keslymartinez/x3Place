@@ -66,6 +66,8 @@ $(function() {
                 $('#initApp').removeClass('hide');
                 $('#mapContainer').addClass('hide');
                 $('#infoApp').addClass('hide');
+                 $('#div_session').empty();
+                window.reload();
             })
         }
 
@@ -83,8 +85,7 @@ $(document).on('click', '#logout', function(e) {
 
 if(confirm("Desea cerrar sesion?"))
     facebookLogout();
-    $('#div_session').empty();
-    window.reload();
+
 else
     return false;
 })
