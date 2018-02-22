@@ -35,7 +35,7 @@ $(function() {
             let img = 'http//graph.facebook.com/'+response.id+'/picture?type=large';
             $( '#div_session').append(`
                 <div id='facebook-session'><srtrong>${name}</strong>
-                <img src="${img}">
+                <img src=${img}>
                 <a href='#' id='logout' class='btn-flat yellow-text text-darken-4'> Cerrar sesion</a>
                 </div>`);
         });
