@@ -53,11 +53,29 @@ function receiveMessage(event) {
 function evaluateMessage(recipientId, message) {
     var finalMessage = '';
 
-    if (isContain(message, 'parques')) {
-        finalMessage = 'si miras el mapa podras encontrar algunos parques';
+    if (isContain(message, 'hola')) {
+        finalMessage = 'Hola, Bienvenido a NEAR ME';
+    } else if(isContain(message, 'como estas?')){
+
+        finalMessage = 'Bien gracias ¿y tú?';
+
+    } else if(isContain(message, 'parque')) {
+
+        finalMessage = 'si miras el mapa podrás encontrar algunos parques';
+
+    } else if (isContain(message, 'parques')) {
+
+        finalMessage = 'si miras el mapa podrás encontrar algunos parques';
+
+    } else if (isContain(message, 'mapa')){
+        
+        finalMessage = 'en el mapa puedes trazar tu ruta';
+
     } else {
-        finalMessage = 'solo se repetir las cosas : ' + message;
-    }
+
+        finalMessage = 'Near me te ayuda a encontrar los parques cercanos a tu ubicación y te dice como llegar';
+    } 
+
     sendMessageText(recipientId, finalMessage);
 }
 
