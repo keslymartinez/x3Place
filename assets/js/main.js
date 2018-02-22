@@ -33,13 +33,11 @@ $(function() {
             console.log(response)
             let name = response.name;
             let img = 'http//graph.facebook.com/'+response.id+'/picture?type=large';
-            $( '#div_session').append(`
-
-                <div id="facebook-session" ><srtrong>${name}</strong>
-                <img src=${img}>
-                <a href="#" id="logout" class="waves-effect waves-light indigo darken-4 btn-large" >Cerrar sesion</a>
-                </div>`
-                );
+            $('#div_session').empty();
+            $('#div_session').append(`
+                        <li> &nbsp &nbsp &nbsp &nbspBienvenid@: &nbsp ${name}</li>
+        <li><a href="#" id="logout" class="btn-floating yellow darken-4 white "><i class="material-icons">close</i></a></li>
+                `);
         });
 }
 
