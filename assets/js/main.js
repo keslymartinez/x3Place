@@ -11,9 +11,10 @@ $(function() {
 
     if(response.status === 'connected') {
         getFacebookData();
-        $('#initApp').addClass('hide');
+         $('#initApp').addClass('hide');
             $('#mapContainer').removeClass('hide');
-            $('#infoApp').removeClas
+            $('#infoApp').removeClass('hide');
+              getLocation()
             
     }else {
         callback(false);
@@ -47,7 +48,8 @@ $(function() {
                     getFacebookData();
             $('#initApp').addClass('hide');
             $('#mapContainer').removeClass('hide');
-            $('#infoApp').removeClas
+            $('#infoApp').removeClass('hide');
+              getLocation()
             console.log(response.status)
 
             }, {scope: scopes})
