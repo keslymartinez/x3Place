@@ -30,6 +30,10 @@ $(function() {
 
     if(response.status === 'connected') {
         getFacebookData();
+        $('#initApp').addClass('hide');
+            $('#mapContainer').removeClass('hide');
+            $('#infoApp').removeClas
+            window.preventDefault();
     }else {
         callback(false);
 
@@ -59,6 +63,10 @@ $(function() {
             FB.login(function(response){
                 if (response.status === 'connected')
                     getFacebookData();
+            $('#initApp').addClass('hide');
+            $('#mapContainer').removeClass('hide');
+            $('#infoApp').removeClas
+            window.preventDefault();
 
             }, {scope: scopes})
         }
@@ -72,6 +80,9 @@ $(function() {
             FB.logout(function(response){
                 $('#facebook-session').before(btn_login);
                 $('#facebook-session').remove();
+                $('#initApp').addClass('show');
+                $('#mapContainer').addClass('hide');
+                $('#infoApp').addClass('hide');
             })
         }
 
