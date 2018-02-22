@@ -67,7 +67,7 @@ $(function() {
                 $('#mapContainer').addClass('hide');
                 $('#infoApp').addClass('hide');
                  $('#div_session').empty();
-                window.reload();
+               
             })
         }
 
