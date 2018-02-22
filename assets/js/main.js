@@ -33,10 +33,9 @@ $(function() {
     }else {
         callback(false);
 
-        $( "div" ).html( "<span>Usuario conectado</span>" );
+        
     }
-}
-
+} $( "div" ).html( "<span>Usuario conectado</span>" );
     var checkLoginState = function(callback) {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response, function(data) {
