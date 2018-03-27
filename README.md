@@ -1,39 +1,12 @@
 
-# ** NEAR ME **
-- **PROYECTO EN FIREBASE** - (https://findme-visidevi.firebaseapp.com)
+# NEAR ME
 
-##  **OBJETIVO**
-MoSTRAR NUESTROS CONOCIMIENTOS del manejo de APIS
 
-##  **DESARROLLO**
+<img src="https://images.unsplash.com/photo-1462024095154-899fa94b875d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=04e65fc88c26c07adac8cf03a7364263&auto=format&fit=crop&w=750&q=80">
 
--Es6 Fetch: Para llamar la api
--Google Maps API, -Google Place API
+## Desarrollado para
 
-##Nuestra app se visualiza asi:
-
-![Alt text](assets/img/capture5.jpeg),
-![Alt text](assets/img/capture2.jpeg),
-![Alt text](assets/img/capture4.jpeg)
-
-##  Lenguaje 
-- javascript
-
-##  Herramientas
--Dark sky Api
--Facebook Api
--Google Maps API 
--Google Place API
-- Html5
-- Jquery
-- Hosting Firebase
-
-## Autoras
-- **Nadia** - [@Nadia](https://github.com/NadiaMorales)
-- **Kesly** - [@Kesly](https://github.com/keslymartinez)
-
-- **Visaka** - [@visidevi](https://github.com/visidevi)
+[Laboratoria](http://www.laboratoria.la/)
 
 
 
-Open source; 2018
